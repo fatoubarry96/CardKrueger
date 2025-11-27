@@ -1,0 +1,327 @@
+------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/fatoubarry/Desktop/CardKrueger Replication/ck_replication_
+> results.txt
+  log type:  text
+ opened on:  26 Nov 2025, 19:49:52
+
+. 
+. * 3. Load dataset
+. use "fastfood.dta", clear
+
+. 
+. * 4. Take a quick look at the data (so tables show in log)
+. describe
+
+Contains data from fastfood.dta
+ Observations:           410                  
+    Variables:            47                  25 Nov 2025 04:20
+------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------
+index           long    %12.0g                
+var1            long    %12.0g                
+var2            long    %12.0g                
+var3            long    %12.0g                
+var4            long    %12.0g                
+var5            long    %12.0g                
+var6            long    %12.0g                
+var7            long    %12.0g                
+var8            long    %12.0g                
+var9            long    %12.0g                
+var10           long    %12.0g                
+var11           long    %12.0g                
+var12           str5    %5s                   
+var13           str5    %5s                   
+var14           str5    %5s                   
+var15           str4    %4s                   
+var16           str4    %4s                   
+var17           str4    %4s                   
+var18           long    %12.0g                
+var19           str5    %5s                   
+var20           long    %12.0g                
+var21           double  %10.0g                
+var22           double  %10.0g                
+var23           str4    %4s                   
+var24           str4    %4s                   
+var25           str4    %4s                   
+var26           str1    %1s                   
+var27           str1    %1s                   
+var28           long    %12.0g                
+var29           long    %12.0g                
+var30           long    %12.0g                
+var31           str1    %1s                   
+var32           str5    %5s                   
+var33           str5    %5s                   
+var34           str4    %4s                   
+var35           str4    %4s                   
+var36           str4    %4s                   
+var37           str4    %4s                   
+var38           str1    %1s                   
+var39           str1    %1s                   
+var40           str5    %5s                   
+var41           str5    %5s                   
+var42           str4    %4s                   
+var43           str4    %4s                   
+var44           str4    %4s                   
+var45           str1    %1s                   
+var46           str1    %1s                   
+------------------------------------------------------------------------------
+Sorted by: 
+
+. codebook var1 var2 var3 var4 var5 var6 var7 var8 var9 var10
+
+------------------------------------------------------------------------------
+var1                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [1,522]                       Units: 1
+         Unique values: 409                       Missing .: 0/410
+
+                  Mean: 246.507
+             Std. dev.: 148.232
+
+           Percentiles:     10%       25%       50%       75%       90%
+                           46.5       119     237.5       372     456.5
+
+------------------------------------------------------------------------------
+var2                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [1,4]                         Units: 1
+         Unique values: 4                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          171  1
+                           80  2
+                           99  3
+                           60  4
+
+------------------------------------------------------------------------------
+var3                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          269  0
+                          141  1
+
+------------------------------------------------------------------------------
+var4                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                           79  0
+                          331  1
+
+------------------------------------------------------------------------------
+var5                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          317  0
+                           93  1
+
+------------------------------------------------------------------------------
+var6                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          347  0
+                           63  1
+
+------------------------------------------------------------------------------
+var7                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          235  0
+                          175  1
+
+------------------------------------------------------------------------------
+var8                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          374  0
+                           36  1
+
+------------------------------------------------------------------------------
+var9                                                               (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          367  0
+                           43  1
+
+------------------------------------------------------------------------------
+var10                                                              (unlabeled)
+------------------------------------------------------------------------------
+
+                  Type: Numeric (long)
+
+                 Range: [0,1]                         Units: 1
+         Unique values: 2                         Missing .: 0/410
+
+            Tabulation: Freq.  Value
+                          375  0
+                           35  1
+
+. 
+. * 5. Rename key variables to readable names
+. *    (based on what we saw in your codebook)
+. rename var1  state          // 1 = NJ, 0 = PA
+
+. rename var3  chain          // chain id
+
+. rename var7  wave           // 1 = pre, 2 = post
+
+. rename var10 emptot         // total employees at first interview
+
+. rename var11 empsk          // number of skilled employees
+
+. rename var17 wage_st        // starting wage (string)
+
+. 
+. * 6. Make sure wage variable is numeric
+. destring wage_st, replace ignore(".")   // converts "4.25" etc to numeric
+wage_st: character . removed; replaced as byte
+(43 missing values generated)
+
+. rename wage_st wage                     // nicer name
+
+. 
+. * 7. Construct total employment (like in the paper)
+. gen emp_tot = emptot + empsk
+
+. 
+. * 8. Create treatment & post indicators (DiD setup)
+. gen treated = (state == 1)    // 1 = New Jersey (treated), 0 = Pennsylvania
+
+. gen post    = (wave  == 2)    // 1 = after minimum wage increase
+
+. 
+. *   Check they vary (these tables will also show in the log)
+. tab treated
+
+    treated |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        409       99.76       99.76
+          1 |          1        0.24      100.00
+------------+-----------------------------------
+      Total |        410      100.00
+
+. tab post
+
+       post |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        410      100.00      100.00
+------------+-----------------------------------
+      Total |        410      100.00
+
+. 
+. * 9. Main DiD regression on employment
+. *    Using factor-variable syntax so Stata handles interaction
+. reg emp_tot i.treated##i.post, robust
+note: 0.post omitted because of collinearity.
+note: 1.treated#0.post omitted because of collinearity.
+
+Linear regression                               Number of obs     =        410
+                                                F(0, 408)         =          .
+                                                Prob > F          =          .
+                                                R-squared         =     0.0018
+                                                Root MSE          =     1.4232
+
+------------------------------------------------------------------------------
+             |               Robust
+     emp_tot | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   1.treated |  -1.229829   .0704584   -17.45   0.000    -1.368336   -1.091322
+      0.post |          0  (omitted)
+             |
+treated#post |
+        1 0  |          0  (omitted)
+             |
+       _cons |   1.229829   .0704584    17.45   0.000     1.091322    1.368336
+------------------------------------------------------------------------------
+
+. 
+. *    DiD estimate (NJ vs PA, post vs pre) is:
+. *    _b[1.treated#1.post]
+. 
+. * 10. DiD regression on log wages
+. gen lwage = log(wage)    // log wage (fixes previous type mismatch)
+(43 missing values generated)
+
+. 
+. reg lwage i.treated##i.post, robust
+note: 0.post omitted because of collinearity.
+note: 1.treated#0.post omitted because of collinearity.
+
+Linear regression                               Number of obs     =        367
+                                                F(0, 365)         =          .
+                                                Prob > F          =          .
+                                                R-squared         =     0.0006
+                                                Root MSE          =     .45338
+
+------------------------------------------------------------------------------
+             |               Robust
+       lwage | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   1.treated |   .2065392   .0237308     8.70   0.000      .159873    .2532054
+      0.post |          0  (omitted)
+             |
+treated#post |
+        1 0  |          0  (omitted)
+             |
+       _cons |   3.012337   .0237308   126.94   0.000      2.96567    3.059003
+------------------------------------------------------------------------------
+
+. 
+. * 11. Close log
+. log close
+      name:  <unnamed>
+       log:  /Users/fatoubarry/Desktop/CardKrueger Replication/ck_replication_
+> results.txt
+  log type:  text
+ closed on:  26 Nov 2025, 19:49:53
+------------------------------------------------------------------------------
