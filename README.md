@@ -1,1 +1,1 @@
-# CardKrueger
+This repository contains my replication of Card & Krueger (1994), using the public fast-food dataset to recreate their difference-in-differences results on New Jersey’s minimum wage increase. I cleaned the data, created the treatment and post variables, and ran the main DiD regressions for employment and log wages. All of my code is in the ck_replication.do file, and the full output (including tables and regressions) is saved in ck_replication_results.txt. The dataset (fastfood.dta) is included so the results can be fully reproduced.
